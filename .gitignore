@@ -10,7 +10,8 @@ dist
 db.sqlite3
 
 venv
-
+Pipfile
+Pipfile.lock
 
 prod_settings.py
 local_settings.py

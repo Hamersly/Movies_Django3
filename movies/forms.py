@@ -1,6 +1,6 @@
 from django import forms
 
-from  .models import Reviews
+from .models import Reviews
 
 
 class ReviewForm(forms.ModelForm):
@@ -9,3 +9,11 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
         fields = ('name', 'email', 'text')
+
+
+class ModelForm(object):
+    pass
+
+
+class CharField(object):
+    pass

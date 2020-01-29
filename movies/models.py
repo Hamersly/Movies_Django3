@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 from django.urls import reverse
 
+
 class Category(models.Model):
     '''Категории'''
     name = models.CharField('Категории', max_length=150)
@@ -25,6 +26,9 @@ class Actor(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('actor_detail', kwargs={'slug': self.name})
 
     class Meta:
         verbose_name = "Актёры и режиссёры"
@@ -68,7 +72,7 @@ class Movie(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('movie_detail', kwargs={'slug':self.url})
+        return reverse('movie_detail', kwargs={'slug': self.url})
 
     def get_review(self):
         return self.reviews_set.filter(parent__isnull=True)
@@ -112,7 +116,7 @@ class Rating(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name='фильм')
 
     def __str__(self):
-        return f*(self.star) - (self.movie)
+        return f * (self.star) - (self.movie)
 
     class Meta:
         verbose_name = "Рейтинг"
